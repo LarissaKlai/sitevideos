@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site de vídeo</title>
+</head>
+
+<body>
+
+    <!-- =====================================================
+       SEÇÃO 1: vídeo de fundo
+       Atributos do <video>:
+         autoplay    -> começa sozinho
+         muted       -> sem som (obrigatório: os navegadores bloqueiam
+                        autoplay de vídeos com som)
+         loop        -> repete sem parar
+         playsinline -> evita tela cheia automática no iPhone
+       Para usar um arquivo seu, troque o src por: videos/fundo.mp4
+       ===================================================== -->
+    <section class="secao-principal" id="inicio">
+
+        <video class="video-fundo" autoplay muted loop playsinline>
+            <source src="./Videos/37712-414754673_medium.mp4" type="video/mp4">
+            Seu navegador não suporta vídeo.
+        </video>
+
+        <div class="camada-gradiente"></div>
+
+        <header class="cabecalho">
+            <a class="logotipo" href="#inicio">Um pouco do Oceano em suas mãos</a>
+            <nav class="menu">
+                <a href="#galeria">Trabalhos</a>
+                <a href="#contato">Contato</a>
+            </nav>
+        </header>
+
+        <div class="conteudo-principal">
+            <h1>A vida no mar pode ser mais interessante do que você imagina.</h1>
+            <p>Criamos vídeos voltados a esse tema, para qualquer conteudo que possa agradar apaixonados pelo Oceano.</p>
+            <div class="grupo-botoes">
+                <a class="botao" href="#galeria">Ver nossos vídeos</a>
+                <a class="botao botao-vazado" href="#contato">Pedir orçamento</a>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+       SEÇÃO 2: galeria
+       Passo 1: o link da miniatura aponta para #video-1
+       Passo 2: a <div id="video-1"> fica escondida no CSS
+       Passo 3: ao clicar, o :target mostra a janela
+       Para abrir numa NOVA GUIA, troque href="#video-1" por
+       href="endereco-do-video.mp4" target="_blank"
+       ===================================================== -->
+    <section class="secao-galeria" id="galeria">
+        <h2>Trabalhos recentes</h2>
+        <p class="introducao">Clique em um vídeo para assistir.</p>
+
+        <div class="galeria">
+
+            <!-- Vídeo 1 -->
+            <!-- A miniatura é o próprio vídeo, parado. O "#t=0.5" no final
+           do endereço mostra o quadro do meio segundo. -->
+            <a class="cartao-video" href="#video-1">
+                <video class="miniatura" muted preload="metadata">
+                    <source src="./Videos/305896_medium.mp4" type="video/mp4">
+                </video>
+                <span class="icone-play"></span>
+                <span class="titulo-video">Fundo do mar</span>
+            </a>
+
+            <!-- Vídeo 2 -->
+            <a class="cartao-video" href="#video-2">
+                <video class="miniatura" muted preload="metadata">
+                    <source src="./Videos/10480-224857514_medium.mp4" type="video/mp4">
+                </video>
+                <span class="icone-play"></span>
+                <span class="titulo-video">Rainhas do mar</span>
+            </a>
+
+            <!-- Vídeo 3 -->
+            <a class="cartao-video" href="#video-3">
+                <video class="miniatura" muted preload="metadata">
+                    <source src="./Videos/215842_medium.mp4" type="video/mp4">
+                </video>
+                <span class="icone-play"></span>
+                <span class="titulo-video">Peixinhos</span>
+            </a>
+
+        </div>
+
+        <!-- Janelas (escondidas até o clique).
+         controls    -> mostra play, volume e tela cheia
+         preload="none" -> só baixa o vídeo quando a pessoa der play -->
+        <div class="janela-video" id="video-1">
+            <a class="fundo-fechar" href="#galeria" aria-label="Fechar vídeo"></a>
+            <a class="fechar" href="#galeria" aria-label="Fechar vídeo">&times;</a>
+            <video controls preload="none">
+                <source src="./Videos/305896_medium.mp4">
+            </video>
+        </div>
+
+        <div class="janela-video" id="video-2">
+            <a class="fundo-fechar" href="#galeria" aria-label="Fechar vídeo"></a>
+            <a class="fechar" href="#galeria" aria-label="Fechar vídeo">&times;</a>
+            <video controls preload="none">
+                <source src="./Videos/10480-224857514_medium.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="janela-video" id="video-3">
+            <a class="fundo-fechar" href="#galeria" aria-label="Fechar vídeo"></a>
+            <a class="fechar" href="#galeria" aria-label="Fechar vídeo">&times;</a>
+            <video controls preload="none">
+                <source src="./Videos/215842_medium.mp4">
+            </video>
+        </div>
+    </section>
+
+
+    <!-- =====================================================
+       SEÇÃO 3: formulário de contato
+       Cada <label for="..."> se liga ao campo de mesmo id.
+       O action está vazio: aqui entraria o endereço do servidor
+       que recebe a mensagem (HTML e CSS sozinhos não enviam e-mails).
+       ===================================================== -->
+    <section class="secao-contato" id="contato">
+        <h2>Vamos conversar sobre o seu vídeo</h2>
+        <p class="introducao">Conte o que você precisa e respondemos em até um dia útil.</p>
+
+        <form class="formulario" action="https://formsubmit.co/lariklaisantos@gmail.com" method="post">
+            <div class="campo">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+
+            <div class="campo">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="campo">
+                <label for="mensagem">Mensagem</label>
+                <textarea id="mensagem" name="mensagem" required></textarea>
+            </div>
+
+            <button class="botao" type="submit">Enviar mensagem</button>
+        </form>
+    </section>
+
+
+    <!-- RODAPÉ -->
+    <footer class="rodape">
+        <p>Larissa Klai Santos | Téc. Multimidia &copy;</p>
+        <p>O enigma do mar.<a href="#inicio">Voltar ao topo</a></p>
+    </footer>
+
+</body>
+
+</html>
